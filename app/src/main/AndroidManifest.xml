@@ -19,7 +19,9 @@
         <activity android:name=".view.view.DetailMoviesActivity"
             android:parentActivityName=".view.view.MainActivity"/>
 
-        <activity android:name=".view.view.MainActivity">
+        <activity
+            android:name=".view.view.MainActivity"
+            android:configChanges="orientation|screenSize">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
