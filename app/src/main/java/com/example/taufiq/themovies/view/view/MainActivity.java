@@ -1,6 +1,7 @@
 package com.example.taufiq.themovies.view.view;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.BottomNavigationView;
@@ -66,4 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 }
