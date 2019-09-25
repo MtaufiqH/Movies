@@ -45,7 +45,7 @@ public class TvFragment extends Fragment implements RequestCallback {
 
         // init UI
         final RecyclerView recyclerView = view.findViewById(R.id.recycler_tv);
-        progressBar = view.findViewById(R.id.tv_progress);
+        progressBar = view.findViewById(R.id.tv_progressBar);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
