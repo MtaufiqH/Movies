@@ -1,7 +1,6 @@
 package com.example.taufiq.themovies.view.view;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.BottomNavigationView;
@@ -16,6 +15,9 @@ import com.example.taufiq.themovies.view.view.fragment.TvFragment;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    public static final String KEY_FRAGMENT = "fragment";
+    private Fragment content = new MoviesFragment();
+    private Fragment content1 = new TvFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,19 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
 
-        initFragment(new MoviesFragment());
+        if (savedInstanceState == null) {
+            initFragment(content);
+        } else {
+            content = getSupportFragmentManager().getFragment(savedInstanceState, KEY_FRAGMENT);
+            initFragment(content);
+        }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        getSupportFragmentManager().putFragment(outState, KEY_FRAGMENT, content);
+        super.onSaveInstanceState(outState);
     }
 
     private void bottomNavigationSetup(BottomNavigationView bottomNavigationView) {
@@ -53,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             break;
                     }
+
+                    initFragment(content);
                     return true;
                 });
     }
@@ -67,8 +82,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
+
+
+    /*@Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-    }
+    }*/
+
+
 }

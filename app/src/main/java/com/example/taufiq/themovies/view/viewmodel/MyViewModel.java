@@ -48,8 +48,8 @@ public class MyViewModel extends ViewModel {
                     // call the onFinish callback to handle success event
                     requestCallback.onFinish();
 
-                    movies.postValue((ArrayList<MovieResult>) response.body()
-                            .getMovie_results());
+                    movies.postValue((ArrayList<MovieResult>) (response.body() != null ? response.body()
+                            .getMovie_results() : null));
                 }
 
             }
@@ -81,8 +81,8 @@ public class MyViewModel extends ViewModel {
                     // call the onFinish callback to handle success event
                     requestCallback.onFinish();
 
-                    tvShows.postValue((ArrayList<TvResult>) response.body()
-                            .getMovie_results()) ;
+                    tvShows.postValue((ArrayList<TvResult>) (response.body() != null ? response.body()
+                            .getMovie_results() : null)) ;
                 }
             }
 
